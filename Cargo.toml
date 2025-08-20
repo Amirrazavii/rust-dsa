@@ -1,0 +1,4 @@
+[package]
+name = "rust_dsa"   # این اسم crate اصلیه (مهمه!)
+version = "0.1.0"
+edition = "2021"
