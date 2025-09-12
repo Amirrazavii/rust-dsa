@@ -1,11 +1,17 @@
 mod design_patterns;
 pub mod problems;
 use design_patterns::prototype::{Circle, Prototype};
-
+use design_patterns::singleton::{Config};
 fn main() {
-    let circle1 = Circle { radius: 5.0 };
-    let circle2 = circle1.clone_box();
+    let config = Config::get_instance();
 
-    println!("Circle1: {:?}", circle1);
-    println!("Circle2: {:?}", circle2);
+    {
+        let mut cfg = config.lock().unwrap();
+        cfg.set_value("Hello Singleton!");
+    }
+
+    {
+        let cfg = config.lock().unwrap();
+        println!("Config value: {}", cfg.get_value());
+    }
 }
